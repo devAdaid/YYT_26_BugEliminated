@@ -7,10 +7,12 @@ using Octokit;
 public class GithubRepositoryConnector
 {
     private GameProject project;
+    private GitHubClient client;
 
-    public GithubRepositoryConnector(GameProject gameProject)
+    public GithubRepositoryConnector(GameProject gameProject, GitHubClient client)
     {
         this.project = gameProject;
+        this.client = client;
     }
 
     public async Task GetDataAndUpdate()

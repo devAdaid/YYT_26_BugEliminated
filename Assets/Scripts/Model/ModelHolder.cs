@@ -15,6 +15,6 @@ public class ModelHolder : MonoSingleton<ModelHolder>
 
     private void InitializeUI()
     {
-        UIHolder.I.BugCountUI.ApplyBugCount(Player.Project.BugCount);
+        UIHolder.I.BugCountUI.SetActive(false);
     }
 }

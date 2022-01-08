@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameProject
 {
-    public int BugCount { get; private set; };
+    public int BugCount { get; private set; }
     public int LastCommitCount { get; private set; }
 
     public readonly string GithubRepositoryOwner;
@@ -16,6 +16,7 @@ public class GameProject
     {
         GithubRepositoryOwner = repositoryOwner;
         GithubRepositoryName = repositoryName;
+        UpdateBugCountUI();
     }
 
     public void AddBug(int amount)

@@ -8,7 +8,15 @@ public class PlayerModel
 
     public PlayerModel()
     {
-        Project = new GameProject("devAdaid", "YYT_26_BugEliminated", 0);
-        NetworkConnectorHolder.I.AddConnector(new GithubRepositoryConnector(Project));
+    }
+
+    public void AddProject(string repositoryOwner, string repositoryName, int lastCommitCount)
+    {
+        Project = new GameProject(repositoryOwner, repositoryName, lastCommitCount);
+        NetworkConnectorHolder.I.AddConnector(new GithubRepositoryConnector(Project, NetworkConnectorHolder.I.Client));
+
+        UIHolder.I.BugCountUI.SetActive(true);
+        UIHolder.I.BugCountUI.ApplyBugCount(Project.BugCount);
+        BugAdder.I.StartAddBug();
     }
 }
