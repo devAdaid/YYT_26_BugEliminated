@@ -7,7 +7,7 @@ public class BugView : MonoBehaviour
     [SerializeField]
     private GameObject bugPrefab;
 
-    private List<GameObject> bugs;
+    private List<GameObject> bugs = new List<GameObject>();
 
     public void ApplyBugCount(int count)
     {
