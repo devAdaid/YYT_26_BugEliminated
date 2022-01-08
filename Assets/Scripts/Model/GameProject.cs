@@ -16,7 +16,6 @@ public class GameProject
     {
         GithubRepositoryOwner = repositoryOwner;
         GithubRepositoryName = repositoryName;
-        UpdateBugCountUI();
     }
 
     public void AddBug(int amount)
@@ -44,5 +43,6 @@ public class GameProject
     {
         // TODO: 이 프로젝트 선택중일때만 갱신
         UIHolder.I.BugCountUI.ApplyBugCount(BugCount);
+        UIHolder.I.BugView.ApplyBugCount(BugCount);
     }
 }

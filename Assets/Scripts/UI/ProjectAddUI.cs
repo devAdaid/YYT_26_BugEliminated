@@ -16,12 +16,12 @@ public class ProjectAddUI : MonoBehaviour
     [SerializeField]
     private Text logText = null;
 
-    public void TryAddProject()
+    public async void TryAddProject()
     {
         var repoOwner = ownerInput.text;
         var repoName = nameInput.text;
 
-        var _ = TryAddProject(repoOwner, repoName);
+        await TryAddProject(repoOwner, repoName);
     }
 
     private async Task TryAddProject(string repoOwner, string repoName)
@@ -32,7 +32,8 @@ public class ProjectAddUI : MonoBehaviour
             return;
         }
 
-        var commits = await NetworkConnectorHolder.I.Client.Repository.Commit.GetAll(repoOwner, repoName);
+        var client = new GitHubClient(new Octokit.ProductHeaderValue("BugEliminatedGame"));
+        var commits = await client.Repository.Commit.GetAll(repoOwner, repoName);
         var commitCount = commits.Count;
 
         if (commitCount == 0)

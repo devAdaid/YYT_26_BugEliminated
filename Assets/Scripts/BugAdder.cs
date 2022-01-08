@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class BugAdder : MonoSingleton<BugAdder>
 {
+    [SerializeField]
     private float waitedTime = 0f;
+    [SerializeField]
     private bool canAdd;
 
     private static readonly float BUG_ADD_TIME_SECONDS = 5f;
@@ -30,7 +32,7 @@ public class BugAdder : MonoSingleton<BugAdder>
         if (waitedTime > BUG_ADD_TIME_SECONDS)
         {
             waitedTime -= BUG_ADD_TIME_SECONDS;
-            ModelHolder.I.Player.Project.AddBug(1);
+            ModelHolder.I.Player.GameProject.AddBug(1);
         }
     }
 }

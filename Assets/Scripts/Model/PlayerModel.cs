@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerModel
 {
-    public GameProject Project;
+    public GameProject GameProject;
 
     public PlayerModel()
     {
@@ -12,11 +12,12 @@ public class PlayerModel
 
     public void AddProject(string repositoryOwner, string repositoryName, int lastCommitCount)
     {
-        Project = new GameProject(repositoryOwner, repositoryName, lastCommitCount);
-        NetworkConnectorHolder.I.AddConnector(new GithubRepositoryConnector(Project, NetworkConnectorHolder.I.Client));
+        GameProject = new GameProject(repositoryOwner, repositoryName, lastCommitCount);
+        NetworkConnectorHolder.I.AddConnector(new GithubRepositoryConnector(GameProject));
 
         UIHolder.I.BugCountUI.SetActive(true);
-        UIHolder.I.BugCountUI.ApplyBugCount(Project.BugCount);
+        UIHolder.I.BugCountUI.ApplyBugCount(GameProject.BugCount);
+        UIHolder.I.BugView.ApplyBugCount(GameProject.BugCount);
         BugAdder.I.StartAddBug();
     }
 }
